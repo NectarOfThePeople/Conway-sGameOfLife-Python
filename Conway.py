@@ -66,6 +66,7 @@ newgrid=grid[:]             #defines the grid for the next frame
 
 #setting the grid based on the seed | A starts a counter which looks for row, column in order | Note: used strings over enums for lack of percieved benefits
 #incorrect seeds WILL throw errors and I DONOT give a fuck
+counter="EMPTY"
 for i in f:
     if  counter=="EMPTY" and i=="r":            #Sets the counter to row to accept row
         counter="ROW"
@@ -76,20 +77,20 @@ for i in f:
     if  counter=="COLUMN" and i=="f":           #Sets the counter to ENTRY to insert the value
         counter="ENTRY"
 
-    if  counter="ROW":
+    if  counter == "ROW":
 
         if row == NULL:                         #starts counting row if row is null
             row = int(i)
         elif i.isnumeric:                       #increases row if there are more digits
-            row = row*=10 + int(i)              
+            row = (row*10) + int(i)              
 
-    if  counter=="COLUMN":
+    if  counter == "COLUMN":
 
         if col == NULL:                         #starts counting col if col is null
             col= int(i)
 
         elif i.isnumeric:
-            row = row*=10 + int(i)             #increases col if there are more digits
+            col = (col*10) + int(i)             #increases col if there are more digits
 
     
     if counter == "ENTRY":
