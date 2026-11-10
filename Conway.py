@@ -13,15 +13,18 @@ f=input("Seed = ")
 os.system("cls" if os.name == "nt" else "clear")
 
 interval=0.5
-
+clock = time.monotonic()
 
 
 for i in grid:
-    current = time.monotonic
-    singlegridpass()
-    exectime=time.monotonic-current
-    diffednewinterval=interval-exectime
-    time.sleep(diffednewinterval)
+    clock+=interval
+    gridpass()
+    sleepytime=clock-time.monotonic()
+    if sleepytime>0:
+        time.sleep(sleepytime)
+    else:
+        print("Error: Execution took too long by "+ -sleepytime + " seconds")
+        break
 
 
 
